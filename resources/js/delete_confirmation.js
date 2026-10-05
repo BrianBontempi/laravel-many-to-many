@@ -3,7 +3,8 @@ deleteForms.forEach(form => {
     form.addEventListener('submit', e => {
         e.preventDefault();
 
-        const hasConfirmed = confirm('Sei sicuro di volere eliminare il progetto?');
+        const entity = form.dataset.entity || 'il progetto';
+        const hasConfirmed = confirm(`Sei sicuro di volere eliminare ${entity}?`);
         if (hasConfirmed) form.submit();
     })
 })

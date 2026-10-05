@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Guest\HomeController as GuestHomeController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\Guest\ProjectController as GuestProjectController;
+use App\Http\Controllers\Admin\TypeController;
+use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +36,12 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
 
 
     Route::resource('projects', AdminProjectController::class);
+
+    //# Rotte admin types
+    Route::resource('types', TypeController::class);
+
+    //# Rotte admin technologies
+    Route::resource('technologies', TechnologyController::class);
 });
 
 
