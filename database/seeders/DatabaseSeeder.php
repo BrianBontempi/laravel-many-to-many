@@ -19,6 +19,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call([TypeSeeder::class, TechnologySeeder::class]);
 
-        \App\Models\Project::factory(10)->create();
+        $technology_ids = \App\Models\Technology::pluck('id')->toArray();
+
+        \App\Models\Project::factory(10)->create()->each(function ($project) use ($technology_ids) {
+            $project->technologies()->attach(fake()->randomElements($technology_ids, rand(1, 3)));
+        });
     }
 }
